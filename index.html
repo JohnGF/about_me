@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>João Tomás Garcia Farinha - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Header Section -->
+    <header class="bg-white shadow-sm py-6">
+        <div class="container mx-auto px-4 flex justify-between items-center flex-col sm:flex-row">
+            <h1 class="text-2xl font-bold text-gray-900">João Tomás Garcia Farinha</h1>
+            <nav class="mt-4 sm:mt-0">
+                <ul class="flex space-x-4">
+                    <li><a href="#about" class="text-gray-600 hover:text-blue-500 transition-colors duration-300">About</a></li>
+                    <li><a href="#projects" class="text-gray-600 hover:text-blue-500 transition-colors duration-300">Projects</a></li>
+                    <li><a href="#publications" class="text-gray-600 hover:text-blue-500 transition-colors duration-300">Publications</a></li>
+                    <li><a href="#contact" class="text-gray-600 hover:text-blue-500 transition-colors duration-300">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+
+        <!-- About Section -->
+        <section id="about" class="bg-white p-8 rounded-lg shadow-md mb-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">About Me</h2>
+            <p class="text-lg">
+                I am a dedicated professional with a strong academic background in Informatics, Meteorology, Oceanography, and Geophysics. I am currently pursuing a PhD in Computer Science, focusing on the creation of a novel EEG brain device. My expertise lies in Python development, web scraping, and research projects related to unmanned vehicles and environmental data.
+            </p>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="bg-white p-8 rounded-lg shadow-md mb-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">Projects</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Project 1 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Novel EEG Brain Device</h3>
+                    <p class="text-gray-600 mb-4">
+                        A new PhD project involving the creation of a novel EEG brain device.
+                    </p>
+                    <span class="text-sm text-gray-500">Dates: Starting 2025</span>
+                </div>
+                <!-- Project 2 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Web Scraper</h3>
+                    <p class="text-gray-600 mb-4">
+                        A productivity tool for bank pipelines, implemented in Python for licenses checking and extraction.
+                    </p>
+                    <span class="text-sm text-gray-500">Dates: 2022</span>
+                </div>
+                <!-- Project 3 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Low Cost Meteorological Station</h3>
+                    <p class="text-gray-600 mb-4">
+                        A project focused on building a low-cost meteorological station.
+                    </p>
+                    <span class="text-sm text-gray-500">Dates: 2023</span>
+                </div>
+                <!-- Add more projects here following this structure -->
+            </div>
+        </section>
+
+        <!-- Publications Section -->
+        <section id="publications" class="bg-white p-8 rounded-lg shadow-md mb-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">Publications & Research</h2>
+            <ul class="space-y-4">
+                <li>
+                    <h3 class="text-xl font-semibold text-gray-900">Bibliometric Review of EEG Noise Reduction Techniques</h3>
+                    <p class="text-gray-600">
+                        *Neuroscience & Biobehavioral Reviews* (2025). Status: Under revision.
+                    </p>
+                    <p class="text-gray-500 text-sm">Authors: Garcia Farinha, João; Duarte, Carlos</p>
+                </li>
+                <!-- Add more publications here -->
+            </ul>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="bg-white p-8 rounded-lg shadow-md">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Contact</h2>
+            <p class="text-lg mb-4">Feel free to connect with me on LinkedIn or explore my work on GitHub.</p>
+            <div class="flex space-x-4">
+                <a href="https://github.com/JohnGF" target="_blank" class="px-6 py-3 bg-blue-500 text-white rounded-lg shadow-sm hover:bg-blue-600 transition-colors duration-300">
+                    My GitHub
+                </a>
+                <a href="https://orcid.org/0009-0009-9177-9964" target="_blank" class="px-6 py-3 bg-gray-600 text-white rounded-lg shadow-sm hover:bg-gray-700 transition-colors duration-300">
+                    My ORCID ID
+                </a>
+                <!-- Add LinkedIn link here as well -->
+            </div>
+        </section>
+    </main>
+</body>
+</html>
