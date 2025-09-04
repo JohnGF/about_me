@@ -8,10 +8,25 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/your-kit-id.js" crossorigin="anonymous"></script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f3f4f6;
+        }
+        .testimonial-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px -10px rgba(0, 0, 0, 0.15);
+        }
+        .quote-icon {
+            opacity: 0.2;
+            font-size: 2.5rem;
+            position: absolute;
+            top: 15px;
+            right: 20px;
         }
     </style>
 </head>
@@ -23,6 +38,7 @@
             <nav class="mt-4 sm:mt-0">
                 <ul class="flex space-x-4">
                     <li><a href="#about" class="text-gray-600 hover:text-blue-500 transition-colors duration-300">About</a></li>
+                    <li><a href="#testimonials" class="text-gray-600 hover:text-blue-500 transition-colors duration-300">Testimonials</a></li>
                     <li><a href="#projects" class="text-gray-600 hover:text-blue-500 transition-colors duration-300">Projects</a></li>
                     <li><a href="#publications" class="text-gray-600 hover:text-blue-500 transition-colors duration-300">Publications</a></li>
                     <li><a href="#contact" class="text-gray-600 hover:text-blue-500 transition-colors duration-300">Contact</a></li>
@@ -38,9 +54,57 @@
             <p class="text-lg">
                 I am a dedicated, systems-level professional driven by a passion for connecting knowledge across different domains. My background in Informatics, Meteorology, and Geophysics has equipped me with a unique interdisciplinary perspective, allowing me to approach complex problems with a blend of scientific rigor and engineering pragmatism.
             </p>
-            <p class="text-lg">     
+            <p class="text-lg mt-4">     
                 Currently, I am a PhD researcher in Computer Science, where I am designing a novel EEG brain device. This project is a testament to my expertise in AI, physical simulations, and data analysis, requiring me to manage a full-stack engineering process from sensor design to complex signal processing and data interpretation. This work, along with my history of innovative projects, including a patented tactile braille display, demonstrates my ability to transform groundbreaking ideas into tangible, impactful solutions.
             </p>
+        </section>
+
+        <section id="testimonials" class="bg-white p-8 rounded-lg shadow-md mb-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">Professional Testimonials</h2>
+            <p class="text-lg text-gray-600 mb-6">Here's what my professors and research supervisors say about my work:</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Testimonial 1 -->
+                <div class="bg-blue-50 p-6 rounded-lg testimonial-card relative">
+                    <i class="fas fa-quote-right quote-icon text-blue-200"></i>
+                    <p class="text-gray-700 italic mb-4">"João's proficiency in building new devices has been critical to his project's success, overcoming technical challenges with Arduino, 3D printing, and electronics."</p>
+                    <div class="text-sm font-semibold text-blue-800">João Guerreiro, Assistant Professor & MSc Thesis Advisor</div>
+                    <div class="text-xs text-gray-500">University of Lisbon</div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-green-50 p-6 rounded-lg testimonial-card relative">
+                    <i class="fas fa-quote-right quote-icon text-green-200"></i>
+                    <p class="text-gray-700 italic mb-4">"He developed a broad view on all the required aspects of the design of a cloud native application and managed to achieve a correct implementation all by himself."</p>
+                    <div class="text-sm font-semibold text-green-800">Mário Calha, Assistant Professor of Informatics</div>
+                    <div class="text-xs text-gray-500">University of Lisbon</div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-purple-50 p-6 rounded-lg testimonial-card relative">
+                    <i class="fas fa-quote-right quote-icon text-purple-200"></i>
+                    <p class="text-gray-700 italic mb-4">"João's work on algorithm development and data analysis will advance our understanding of brainwave patterns and their application in real-world systems."</p>
+                    <div class="text-sm font-semibold text-purple-800">Carlos Duarte, Associate Professor of Informatics</div>
+                    <div class="text-xs text-gray-500">University of Lisbon</div>
+                </div>
+                
+                <!-- Testimonial 4 -->
+                <div class="bg-amber-50 p-6 rounded-lg testimonial-card relative">
+                    <i class="fas fa-quote-right quote-icon text-amber-200"></i>
+                    <p class="text-gray-700 italic mb-4">"He revealed the ability to tackle complex intellectual challenges, to learn new skills and ways of thinking and to work passionately as part of a research team."</p>
+                    <div class="text-sm font-semibold text-amber-800">Manuel João da Fonseca, Associate Professor</div>
+                    <div class="text-xs text-gray-500">University of Lisbon</div>
+                </div>
+            </div>
+            
+            <div class="mt-8 text-center">
+                <a href="mailto:joaogarciafarinha@gmail.com" class="inline-flex items-center px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors duration-300">
+                    <span>Request Full Recommendations</span>
+                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+            </div>
         </section>
 
         <section id="projects" class="bg-white p-8 rounded-lg shadow-md mb-8">
