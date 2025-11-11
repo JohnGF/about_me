@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quick Access QR Codes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: #f7fafc;
+      color: #333;
+      text-align: center;
+      padding: 2rem;
+    }
+    h1 {
+      margin-bottom: 0.5em;
+    }
+    .qr-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 3rem;
+      margin-top: 1rem;
+    }
+    .qr-item {
+      max-width: 300px;
+    }
+    .qr-item img {
+      max-width: 100%;
+      height: auto;
+      border: 2px solid #3B82F6;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+    }
+    .description {
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Quick Access QR Codes</h1>
+  <div class="qr-container">
+    <div class="qr-item">
+      <img src="qr-aboutme.png" alt="QR code - About Me page" />
+      <div class="description">Visit my About Me page</div>
+    </div>
+    <div class="qr-item">
+      <img src="qr-survey.png" alt="QR code - Quick Survey" />
+      <div class="description">Take my Quick Survey</div>
+    </div>
+  </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
+        new QRCode(document.getElementById("qrcode-aboutme"), "https://johngf.github.io/about_me/");
+        new QRCode(document.getElementById("qrcode-survey"), "https://docs.google.com/forms/d/e/1FAIpQLSfbh9Eh_44jXly5K_m0NjDWFKz71nsHbqO9lZ7qe9Hmy9sHQQ/viewform");
+    </script>
+</body>
+</html>
