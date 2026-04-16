@@ -1,4 +1,8 @@
-  <!DOCTYPE html>
+---
+// Astro component script
+---
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -263,12 +267,12 @@
   <!-- HERO SECTION -->
   <section class="hero" id="hero" tabindex="-1">
     <div class="container" >
-      <h1 class="hero-title">Bridging Neuroscience &amp; Engineering</h1>
-      <div class="hero-subtitle">PhD Researcher in EEG/fNIRS Brain Devices &mdash; Signal Processing &amp; AI</div>
-      <div class="hero-tagline">Multidisciplinary systems engineer: Physics &amp; Informatics meet next-gen neural devices.</div>
+      <h1 class="hero-title">João Garcia Farinha — Bridging Neuroscience &amp; Systems Engineering</h1>
+      <div class="hero-subtitle">PhD Researcher in Multimodal Brain-Computer Interfaces (BCI) | Hardware Hacker | AI Scientist</div>
       <div class="hero-btns" style="margin-bottom:3px;">
         <a href="#projects" class="btn btn-primary" aria-label="View Projects">View Projects <i class="fa-solid fa-arrow-down"></i></a>
         <a href="main.pdf" class="btn btn-secondary" aria-label="Download CV" download>Download CV <i class="fa-solid fa-download"></i></a>
+        <a href="#publications" class="btn btn-secondary" aria-label="Read Publications">Read Publications <i class="fa-solid fa-book"></i></a>
       </div>
     </div>
   </section>
@@ -280,8 +284,7 @@
         <div class="about-photo" aria-label="João's photo"><div class="about-photo__img"></div></div>
         <div class="about-content">
           <h2>About Me</h2>
-          <div class="about-paragraph"><strong>Connecting domains, powering discovery.</strong> <br> I am a dedicated, systems-level professional driven by a passion for connecting knowledge across different domains. My background in Informatics, Meteorology, and Geophysics has equipped me with a unique interdisciplinary perspective, allowing me to approach complex problems with a blend of scientific rigor and engineering pragmatism.</div>
-          <div class="about-paragraph"><span class="about-subheading"><strong>Current Research:</strong></span> Currently, I am a PhD researcher in Computer Science, where I am designing a novel EEG brain device. This project is a testament to my expertise in AI, physical simulations, and data analysis, requiring me to manage a full-stack engineering process from sensor design to complex signal processing and data interpretation. This work, together with projects such as a patented tactile braille display, reflects my ongoing commitment to applying ideas practically and contributing useful solutions.</div>
+          <div class="about-paragraph">I am a multidisciplinary R&amp;D engineer and PhD researcher at LASIGE (Universidade de Lisboa) specializing in Brain-Computer Interfaces (BCI) and multimodal machine learning. My background spans Meteorology, Geophysics, and Informatics, giving me a unique mathematical approach to modeling complex, non-stationary physical systems. Currently, my research focuses on solving the 'generalization crisis' in neurotechnology. Instead of treating physiological fluctuations (like eye movements, heart rate, and metabolic states like glucose spikes) as noise, my architectures use a Learning Using Privileged Information (LUPI) framework to treat them as predictive context. By fusing high-density EEG and fNIRS with custom hardware and embedded AI, I am building robust, calibration-free assistive technologies that can transition from controlled labs into the chaotic real world.</div>
           <div class="about-highlights">
             <div class="highlight-card"><i class="fa-solid fa-flask skill-icon"></i>PhD in EE/CS <span style="font-size:.96em;opacity:.7;">(EEG Devices)</span></div>
             <div class="highlight-card"><i class="fa-solid fa-lightbulb skill-icon"></i>Patented Inventor</div>
@@ -293,64 +296,71 @@
     </section>
     <!-- SKILLS SECTION -->
     <section id="skills" class="container skills-section" aria-label="Skills section">
-      <h2>Skills &amp; Expertise</h2>
+      <h2>Skills &amp; Tech Stack</h2>
       <div class="skills-list">
-        <div class="skill-card"><i class="fa-solid fa-brain skill-icon"></i>AI &amp; Machine Learning</div>
-        <div class="skill-card"><i class="fa-solid fa-wave-square skill-icon"></i>Signal Processing</div>
-        <div class="skill-card"><i class="fa-solid fa-chart-line skill-icon"></i>Data Analysis</div>
-        <div class="skill-card"><i class="fa-solid fa-microchip skill-icon"></i>Electronics &amp; IoT</div>
-        <div class="skill-card"><i class="fa-solid fa-flask skill-icon"></i>Physical Simulations</div>
-        <div class="skill-card"><i class="fa-solid fa-code skill-icon"></i>Python &amp; C++</div>
+        <div class="skill-card" style="flex-direction:column;align-items:flex-start;min-width:240px;flex:1;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><i class="fa-solid fa-wave-square skill-icon"></i><strong>Neuroscience &amp; Signals</strong></div>
+          <span style="font-size:0.9rem;color:#404368;">BCI, EEG/fNIRS Processing, Lab Streaming Layer (LSL), BIDS standards, Signal Fusion</span>
+        </div>
+        <div class="skill-card" style="flex-direction:column;align-items:flex-start;min-width:240px;flex:1;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><i class="fa-solid fa-brain skill-icon"></i><strong>AI &amp; Data Science</strong></div>
+          <span style="font-size:0.9rem;color:#404368;">Python, PyTorch, CUDA, Transformers, Riemannian Geometry, Graph Networks</span>
+        </div>
+        <div class="skill-card" style="flex-direction:column;align-items:flex-start;min-width:240px;flex:1;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><i class="fa-solid fa-microchip skill-icon"></i><strong>Hardware &amp; Embedded</strong></div>
+          <span style="font-size:0.9rem;color:#404368;">C/C++, KiCad (PCB Design), Microcontrollers, 3D Modeling (FreeCAD), Custom Sensor Fabrication</span>
+        </div>
+        <div class="skill-card" style="flex-direction:column;align-items:flex-start;min-width:240px;flex:1;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><i class="fa-solid fa-cloud skill-icon"></i><strong>Cloud &amp; DevOps</strong></div>
+          <span style="font-size:0.9rem;color:#404368;">AWS, Docker, Kubernetes, Distributed Systems, Go</span>
+        </div>
       </div>
     </section>
     <!-- PROJECTS SECTION -->
     <section id="projects" class="container projects-section" aria-label="Projects section">
       <h2>Projects</h2>
       <div class="projects-grid">
-        <article class="project-card" tabindex="0" aria-label="Novel EEG Brain Device with AI project">
+        <article class="project-card" tabindex="0" aria-label="LUPIN: Learning User Physiological Intent Networks (Healthcare)">
           <div class="project-img"><i class="fa-solid fa-brain"></i></div>
           <div class="project-content">
-            <h4>Novel EEG Brain Device with AI</h4>
+            <h4>LUPIN: Learning User Physiological Intent Networks (Healthcare)</h4>
             <div class="project-status">Ongoing</div>
-            <div class="project-desc">My PhD research project, focusing on the creation of an advanced EEG/fNIR brain device. This work involves extensive signal processing, machine learning (ML), and AI to interpret complex neural data and develop a robust, functional prototype.</div>
+            <div class="project-desc">A major initiative to enable affordable, home-based neurorehabilitation for stroke and ALS patients. By building a multimodal AI Transformer that fuses sparse consumer EEG data with auxiliary physiological signals (eye gaze, heart rate, skin conductance), this project bridges the hardware gap between $50k lab equipment and &lt;$1k consumer wearables.</div>
             <div class="project-tags">
-              <span class="project-tag">AI</span><span class="project-tag">Signal Processing</span><span class="project-tag">EEG</span><span class="project-tag">Machine Learning</span>
+              <span class="project-tag">AI Transformer</span><span class="project-tag">Multimodal EEG</span><span class="project-tag">Neurorehabilitation</span>
             </div>
-            <a href="Poster_Mind2Action.pdf" class="project-btn" aria-label="View details about the project">View Details</a>
+          </div>
+        </article>
+        <article class="project-card" tabindex="0" aria-label="NEUROREADY: Real-Time Operator Readiness (Defense &amp; Aerospace)">
+          <div class="project-img"><i class="fa-solid fa-shield-halved"></i></div>
+          <div class="project-content">
+            <h4>NEUROREADY: Real-Time Operator Readiness (Defense &amp; Aerospace)</h4>
+            <div class="project-status">Ongoing</div>
+            <div class="project-desc">A joint project with the Portuguese Navy (CINAV) developing a real-time safety governor for extended military operations. Using hybrid EEG-fNIRS and the LUPI paradigm, the system detects the "Neural Signature of Exhaustion" (cognitive saturation and mental fatigue) to predict human error 15 minutes before it occurs during 24/7 high-stakes surveillance.</div>
+            <div class="project-tags">
+              <span class="project-tag">EEG-fNIRS</span><span class="project-tag">LUPI Paradigm</span><span class="project-tag">Predictive AI</span>
+            </div>
+          </div>
+        </article>
+        <article class="project-card" tabindex="0" aria-label="Bio-Hacking &amp; BCI Gaming">
+          <div class="project-img"><i class="fa-solid fa-gamepad"></i></div>
+          <div class="project-content">
+            <h4>Bio-Hacking &amp; BCI Gaming (LASIGE Summer of Research)</h4>
+            <div class="project-status">Ongoing</div>
+            <div class="project-desc">Leading and mentoring scalable R&amp;D pipelines for engineering students. Projects include building DIY non-invasive optical glucose sensors to study metabolic effects ("Sugar Rush") on AI brainwave decoding, and developing rhythm-driven BCI game interfaces (Unity/Python) that sync brainwaves to music to eliminate AI calibration barriers.</div>
+            <div class="project-tags">
+              <span class="project-tag">DIY Hardware</span><span class="project-tag">Unity/Python</span><span class="project-tag">R&amp;D Mentorship</span>
+            </div>
           </div>
         </article>
         <article class="project-card" tabindex="0" aria-label="Braille Anywhere project">
           <div class="project-img"><i class="fa-solid fa-braille"></i></div>
           <div class="project-content">
-            <h4>Braille Anywhere</h4>
-            <div class="project-status">Patent in Progress</div>
-            <div class="project-desc">Inventor of a patented tactile braille reading device. This project combines electronics, embedded systems, and human-computer interaction to create a groundbreaking portable solution for the visually impaired.</div>
+            <h4>Braille Anywhere (Hardware Invention)</h4>
+            <div class="project-status">Patent Pending</div>
+            <div class="project-desc">Inventor of a patent-pending portable tactile display for the visually impaired. Built from the ground up, combining custom PCB design (KiCad), optimized C firmware, 3D-printed enclosures, and an Android companion app.</div>
             <div class="project-tags">
-              <span class="project-tag">Electronics</span><span class="project-tag">Embedded Systems</span><span class="project-tag">Patent</span><span class="project-tag">HCI</span>
-            </div>
-            <a href="#" class="project-btn" aria-label="View details about the project">View Details</a>
-          </div>
-        </article>
-        <article class="project-card" tabindex="0" aria-label="Shallow Water Python Toolkit project">
-          <div class="project-img"><i class="fa-solid fa-water"></i></div>
-          <div class="project-content">
-            <h4>Shallow Water Python Toolkit</h4>
-            <div class="project-status">Completed 2024</div>
-            <div class="project-desc">A computational project that uses the Floyd-Warshall algorithm to calculate optimal paths in a shallow water environment. This demonstrates expertise in algorithmic design, data analysis, and physical simulations using Python.</div>
-            <div class="project-tags">
-              <span class="project-tag">Python</span><span class="project-tag">Algorithms</span><span class="project-tag">Simulations</span>
-            </div>
-            <a href="#" class="project-btn" aria-label="View details about the project">View Details</a>
-          </div>
-        </article>
-        <article class="project-card" tabindex="0" aria-label="Cloud Meteorological Station project">
-          <div class="project-img"><i class="fa-solid fa-cloud"></i></div>
-          <div class="project-content">
-            <h4>Cloud Meteorological Station</h4>
-            <div class="project-status">Completed 2023</div>
-            <div class="project-desc">An IoT project focused on the design and construction of a low-cost, cloud-connected meteorological station. This involved hardware fabrication, sensor integration, and cloud deployment for real-time data analysis.</div>
-            <div class="project-tags">
-              <span class="project-tag">IoT</span><span class="project-tag">Cloud</span><span class="project-tag">Sensors</span><span class="project-tag">Hardware</span>
+              <span class="project-tag">PCB Design</span><span class="project-tag">C Firmware</span><span class="project-tag">Patent Pending</span>
             </div>
             <a href="#" class="project-btn" aria-label="View details about the project">View Details</a>
           </div>
@@ -409,13 +419,19 @@
     </section>
     <!-- PUBLICATIONS SECTION -->
     <section id="publications" class="container publications-section" aria-label="Publications section">
-      <h2>Publications &amp; Research</h2>
+      <h2>Publications &amp; Patents</h2>
       <ul class="pub-list">
         <li class="pub-item">
           <span class="pub-title">Bibliometric Review of EEG Noise Reduction Techniques</span>
           <span class="pub-badge">Under Revision</span>
           <div class="pub-citation"><strong>Neuroscience &amp; Biobehavioral Reviews</strong>, 2025</div>
           <div class="pub-citation">Garcia Farinha, João; Duarte, Carlos</div>
+        </li>
+        <li class="pub-item">
+          <span class="pub-title">Braille Anywhere – A Portable and Affordable Tactile Display</span>
+          <span class="pub-badge" style="background:#fff3cd;color:#856404;">Patent Pending</span>
+          <div class="pub-citation"><strong>Hardware Invention</strong></div>
+          <div class="pub-citation">Inventor: Garcia Farinha, João</div>
         </li>
       </ul>
     </section>
