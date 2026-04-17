@@ -54,6 +54,7 @@ jobs:
           cache: ${{ steps.detect-package-manager.outputs.manager }}
 
       - name: Setup Pages
+        id: pages  # Add this line
         uses: actions/configure-pages@v5
         
       - name: Install dependencies
