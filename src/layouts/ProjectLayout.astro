@@ -1,0 +1,162 @@
+---
+import Layout from './Layout.astro';
+
+const { frontmatter } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{frontmatter.title} - João Tomás Garcia Farinha</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Base styles inspired by index.astro */
+    *, *::before, *::after { box-sizing: border-box; }
+    :root {
+      --color-primary: #3B82F6;
+      --color-secondary: #8B5CF6;
+      --color-background: #fdfdfd;
+      --color-text: #1a1b26;
+      --color-section-bg: #fff;
+      --color-section-shadow: rgba(0,0,0,0.05);
+      --color-timeline-bg: #f8fafc;
+      --color-subtitle: #555;
+      --color-header-bg: linear-gradient(135deg, #f0f4ff 0%, #f9f5ff 100%);
+      --color-eureka-bg: #fffbe6;
+      --color-eureka-text: #78350f;
+      --font-family: 'Inter', sans-serif;
+    }
+
+    [data-theme="dark"] {
+      --color-primary: #60a5fa;
+      --color-secondary: #a78bfa;
+      --color-background: #0f172a;
+      --color-text: #e2e8f0;
+      --color-section-bg: #1e293b;
+      --color-section-shadow: rgba(0,0,0,0.4);
+      --color-timeline-bg: #334155;
+      --color-subtitle: #cbd5e1;
+      --color-header-bg: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+      --color-eureka-bg: #422006;
+      --color-eureka-text: #fef3c7;
+    }
+
+    body { font-family: var(--font-family); color: var(--color-text); background: var(--color-background); margin: 0; padding: 0; line-height: 1.6; transition: background-color 0.3s, color 0.3s; }
+    a { text-decoration: none; color: var(--color-primary); }
+    a:hover { color: var(--color-secondary); }
+    .container { max-width: 900px; margin: 0 auto; padding: 0 1.5rem; position: relative; }
+
+    /* Header */
+    .header { padding: 40px 0; text-align: center; border-bottom: 1px solid rgba(128,128,128,0.2); margin-bottom: 40px; background: var(--color-header-bg); }
+    .header h1 { font-size: 2.5rem; margin-bottom: 10px; color: var(--color-primary); }
+    .header p.subtitle { font-size: 1.2rem; color: var(--color-subtitle); }
+    .back-btn { display: inline-block; margin-top: 20px; font-weight: 600; font-size: 1.1rem; }
+
+    /* Theme Toggle */
+    .theme-toggle { position: absolute; top: 20px; right: 20px; background: none; border: 2px solid var(--color-primary); color: var(--color-primary); border-radius: 50%; width: 40px; height: 40px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; transition: all 0.2s; }
+    .theme-toggle:hover { background: var(--color-primary); color: #fff; }
+
+    /* Content Sections */
+    .section { margin-bottom: 50px; background: var(--color-section-bg); padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px var(--color-section-shadow); transition: background-color 0.3s, box-shadow 0.3s; }
+    .section h2 { font-size: 1.8rem; margin-top: 0; color: var(--color-secondary); display: flex; align-items: center; gap: 10px; }
+    .section h2 i { opacity: 0.8; }
+
+    /* Timeline / Arrow */
+    .timeline { position: relative; padding-left: 30px; margin-top: 30px; }
+    .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: linear-gradient(to bottom, var(--color-primary), var(--color-secondary)); border-radius: 4px; }
+    .timeline-item { position: relative; margin-bottom: 30px; }
+    .timeline-item::before { content: ''; position: absolute; left: -36px; top: 5px; width: 16px; height: 16px; border-radius: 50%; background: var(--color-section-bg); border: 3px solid var(--color-secondary); transition: background-color 0.3s; }
+    .timeline-date { font-weight: 700; color: var(--color-primary); margin-bottom: 5px; display: block; font-size: 0.95rem; }
+    .timeline-content { background: var(--color-timeline-bg); padding: 15px 20px; border-radius: 8px; border-left: 3px solid var(--color-primary); transition: background-color 0.3s; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; justify-content: center; }
+    .tag { background: rgba(59, 130, 246, 0.1); color: var(--color-primary); padding: 4px 12px; border-radius: 20px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(59, 130, 246, 0.3); }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <button id="themeToggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+    <div class="container">
+      <h1>{frontmatter.title}</h1>
+      <p class="subtitle">{frontmatter.description}</p>
+      <div class="tags">
+        {frontmatter.tags && frontmatter.tags.map((tag) => (
+          <span class="tag">{tag}</span>
+        ))}
+      </div>
+      <a href="/about_me/" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a>
+    </div>
+  </div>
+
+  <div class="container">
+    {frontmatter.problem && (
+      <div class="section">
+        <h2><i class="fa-solid fa-circle-exclamation"></i> The Problem</h2>
+        <p>{frontmatter.problem}</p>
+      </div>
+    )}
+
+    {frontmatter.tasks && (
+      <div class="section">
+        <h2><i class="fa-solid fa-list-check"></i> Tasks & Objectives</h2>
+        <ul>
+          {frontmatter.tasks.map((task) => (
+            <li>{task}</li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    <div class="section">
+      <h2><i class="fa-solid fa-timeline"></i> Project Evolution</h2>
+      <div class="timeline">
+        <slot />
+      </div>
+    </div>
+
+    {frontmatter.eureka && (
+      <div class="section" style="background: var(--color-eureka-bg); border-left: 4px solid #f59e0b;">
+        <h2 style="color: #b45309;"><i class="fa-solid fa-lightbulb"></i> Eureka Moment</h2>
+        <p style="color: var(--color-eureka-text);">{frontmatter.eureka}</p>
+      </div>
+    )}
+
+    {frontmatter.results && (
+      <div class="section">
+        <h2><i class="fa-solid fa-trophy"></i> Results & Impact</h2>
+        <p>{frontmatter.results}</p>
+      </div>
+    )}
+  </div>
+
+  <script is:inline>
+    const themeBtn = document.getElementById('themeToggle');
+    const icon = themeBtn.querySelector('i');
+
+    // Check saved theme
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      icon.classList.replace('fa-moon', 'fa-sun');
+    }
+
+    themeBtn.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      if (isDark) {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'light');
+        icon.classList.replace('fa-sun', 'fa-moon');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+        icon.classList.replace('fa-moon', 'fa-sun');
+      }
+    });
+  </script>
+</body>
+</html>
