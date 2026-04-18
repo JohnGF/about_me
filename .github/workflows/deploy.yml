@@ -17,7 +17,7 @@ concurrency:
 env:
   BUILD_PATH: "."
   # Forces the runner to use Node 24 for all steps to clear deprecation errors
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true 
 
 jobs:
   build:
@@ -25,8 +25,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
-
+        uses: actions/checkout@v6 # Bumped from v4 to v6
+      
       - name: Detect package manager
         id: detect-package-manager
         run: |
@@ -48,15 +48,15 @@ jobs:
           fi
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6 # Bumped from v4 to v6
         with:
-          node-version: "20"
+          node-version: "24" # Targeting the new LTS
           cache: ${{ steps.detect-package-manager.outputs.manager }}
 
       - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v4
-
+        id: pages  # Add this line
+        uses: actions/configure-pages@v5
+        
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
         working-directory: ${{ env.BUILD_PATH }}
@@ -83,4 +83,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
