@@ -1,0 +1,260 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Image Coloring Canvas">
+  <main>
+    <h1>Coloring Canvas</h1>
+    <div class="controls">
+      <div class="control-group">
+        <label for="imageUpload">Upload Image:</label>
+        <input type="file" id="imageUpload" accept="image/*" />
+      </div>
+      <div class="control-group">
+        <label for="colorPicker">Color:</label>
+        <input type="color" id="colorPicker" value="#ff0000" />
+      </div>
+      <div class="control-group">
+        <label for="brushSize">Brush Size:</label>
+        <input type="range" id="brushSize" min="1" max="100" value="10" />
+        <span id="brushSizeDisplay">10px</span>
+      </div>
+      <div class="control-group buttons">
+        <button id="clearBtn">Reset Image</button>
+        <button id="downloadBtn">Download</button>
+      </div>
+    </div>
+
+    <div class="canvas-container">
+      <canvas id="paintCanvas" width="800" height="600"></canvas>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  main {
+    font-family: system-ui, -apple-system, sans-serif;
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    color: #333;
+  }
+  h1 {
+    text-align: center;
+  }
+  .controls {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+    background: #f0f0f0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  .control-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .buttons {
+    margin-left: auto;
+  }
+  button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    background: #0066cc;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  button:hover {
+    background: #0052a3;
+  }
+  #clearBtn {
+    background: #cc0000;
+  }
+  #clearBtn:hover {
+    background: #a30000;
+  }
+  .canvas-container {
+    border: 2px dashed #ccc;
+    background-color: #fff;
+    overflow: auto;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    border-radius: 8px;
+    /* Important for touch devices to prevent scrolling when drawing */
+    touch-action: none;
+  }
+  canvas {
+    display: block;
+    cursor: crosshair;
+    background-color: transparent;
+    max-width: 100%;
+    height: auto;
+  }
+</style>
+
+<script>
+  const fileInput = document.getElementById('imageUpload') as HTMLInputElement;
+  const colorPicker = document.getElementById('colorPicker') as HTMLInputElement;
+  const brushSize = document.getElementById('brushSize') as HTMLInputElement;
+  const brushSizeDisplay = document.getElementById('brushSizeDisplay');
+  const clearBtn = document.getElementById('clearBtn');
+  const downloadBtn = document.getElementById('downloadBtn');
+  const canvas = document.getElementById('paintCanvas') as HTMLCanvasElement;
+  const ctx = canvas.getContext('2d');
+
+  let isDrawing = false;
+  let lastX = 0;
+  let lastY = 0;
+  let img = null;
+
+  // Initialize canvas with a default white background
+  if (ctx) {
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.lineJoin = 'round';
+    ctx.lineCap = 'round';
+  }
+
+  // Update brush size display
+  brushSize.addEventListener('input', (e) => {
+    if (brushSizeDisplay) {
+      brushSizeDisplay.textContent = `${(e.target as HTMLInputElement).value}px`;
+    }
+  });
+
+  // Handle image upload
+  fileInput.addEventListener('change', (e) => {
+    const target = e.target as HTMLInputElement;
+    const file = target.files?.[0];
+    if (!file || !ctx) return;
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      img = new Image();
+      img.onload = () => {
+        // Set canvas size to image size
+        canvas.width = img.width;
+        canvas.height = img.height;
+
+        // Draw image
+        ctx.drawImage(img, 0, 0);
+
+        // Reset brush settings after resize
+        ctx.lineJoin = 'round';
+        ctx.lineCap = 'round';
+      };
+      if (event.target?.result) {
+        img.src = event.target.result as string;
+      }
+    };
+    reader.readAsDataURL(file);
+  });
+
+  // Get coordinates taking into account CSS scaling
+  function getCoordinates(e: MouseEvent | TouchEvent) {
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+
+    let clientX, clientY;
+    if (window.TouchEvent && e instanceof TouchEvent) {
+      clientX = e.touches[0].clientX;
+      clientY = e.touches[0].clientY;
+    } else {
+      const mouseEvent = e as MouseEvent;
+      clientX = mouseEvent.clientX;
+      clientY = mouseEvent.clientY;
+    }
+
+    return {
+      x: (clientX - rect.left) * scaleX,
+      y: (clientY - rect.top) * scaleY
+    };
+  }
+
+  // Drawing functions
+  function draw(e: MouseEvent | TouchEvent) {
+    if (!isDrawing || !ctx) return;
+
+    // Prevent scrolling on touch devices
+    if (e.cancelable) {
+      e.preventDefault();
+    }
+
+    const { x, y } = getCoordinates(e);
+
+    ctx.strokeStyle = colorPicker.value;
+    ctx.lineWidth = parseInt(brushSize.value, 10);
+
+    ctx.beginPath();
+    ctx.moveTo(lastX, lastY);
+    ctx.lineTo(x, y);
+    ctx.stroke();
+
+    lastX = x;
+    lastY = y;
+  }
+
+  function startDrawing(e: MouseEvent | TouchEvent) {
+    isDrawing = true;
+    const { x, y } = getCoordinates(e);
+    lastX = x;
+    lastY = y;
+
+    // Draw a dot immediately for single clicks/taps
+    if (ctx) {
+      ctx.fillStyle = colorPicker.value;
+      ctx.beginPath();
+      ctx.arc(lastX, lastY, parseInt(brushSize.value, 10) / 2, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Reset for stroke
+      ctx.beginPath();
+      ctx.moveTo(lastX, lastY);
+    }
+  }
+
+  function stopDrawing() {
+    isDrawing = false;
+  }
+
+  // Mouse event listeners
+  canvas.addEventListener('mousedown', startDrawing);
+  canvas.addEventListener('mousemove', draw);
+  canvas.addEventListener('mouseup', stopDrawing);
+  canvas.addEventListener('mouseout', stopDrawing);
+
+  // Touch event listeners (Safari/Mobile)
+  canvas.addEventListener('touchstart', startDrawing, { passive: false });
+  canvas.addEventListener('touchmove', draw, { passive: false });
+  canvas.addEventListener('touchend', stopDrawing);
+  canvas.addEventListener('touchcancel', stopDrawing);
+
+  // Clear button
+  clearBtn?.addEventListener('click', () => {
+    if (!ctx) return;
+
+    if (img) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(img, 0, 0);
+    } else {
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+  });
+
+  // Download button
+  downloadBtn?.addEventListener('click', () => {
+    const link = document.createElement('a');
+    link.download = 'colored-image.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  });
+</script>
