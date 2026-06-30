@@ -1,0 +1,399 @@
+---
+// AI Disclosure Page
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Media &amp; Design Disclosure - João Tomás Garcia Farinha</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Academic disclosure regarding the use of generative AI assets in research visualization.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    :root {
+      --color-primary: #3B82F6;
+      --color-secondary: #8B5CF6;
+      --color-background: #fdfdfd;
+      --color-text: #1a1b26;
+      --color-card-bg: #ffffff;
+      --color-card-border: #e2e8f0;
+      --color-subtitle: #4b5563;
+      --color-alert-bg: #eff6ff;
+      --color-alert-border: #bfdbfe;
+      --color-alert-text: #1e3a8a;
+      --font-family: 'Inter', sans-serif;
+      --radius-lg: 12px;
+      --radius-md: 8px;
+      --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      --box-shadow-hover: 0 8px 30px rgba(59, 130, 246, 0.1);
+    }
+
+    [data-theme="dark"] {
+      --color-primary: #60a5fa;
+      --color-secondary: #a78bfa;
+      --color-background: #0f172a;
+      --color-text: #e2e8f0;
+      --color-card-bg: #1e293b;
+      --color-card-border: rgba(255, 255, 255, 0.1);
+      --color-subtitle: #94a3b8;
+      --color-alert-bg: #1e3a8a;
+      --color-alert-border: #3b82f6;
+      --color-alert-text: #eff6ff;
+      --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      --box-shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    body {
+      font-family: var(--font-family);
+      color: var(--color-text);
+      background: var(--color-background);
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--color-primary);
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    a:hover {
+      color: var(--color-secondary);
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      position: relative;
+    }
+
+    /* Header */
+    .header {
+      padding: 40px 0;
+      text-align: center;
+      margin-bottom: 40px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%);
+      border: 1px solid var(--color-card-border);
+      position: relative;
+    }
+
+    .header h1 {
+      font-size: 2.2rem;
+      margin: 0 0 10px 0;
+      color: var(--color-primary);
+      letter-spacing: -0.02em;
+    }
+
+    .header p.subtitle {
+      font-size: 1.1rem;
+      margin: 0;
+      color: var(--color-subtitle);
+    }
+
+    .theme-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: 2px solid var(--color-primary);
+      color: var(--color-primary);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: all 0.2s;
+    }
+
+    .theme-toggle:hover {
+      background: var(--color-primary);
+      color: #fff;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 25px;
+      font-size: 0.95rem;
+    }
+
+    /* Sections */
+    .card {
+      background: var(--color-card-bg);
+      border: 1px solid var(--color-card-border);
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: var(--box-shadow);
+      transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .card h2 {
+      font-size: 1.5rem;
+      margin-top: 0;
+      margin-bottom: 15px;
+      color: var(--color-secondary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Alert Banner */
+    .alert-banner {
+      background: var(--color-alert-bg);
+      border: 1px solid var(--color-alert-border);
+      color: var(--color-alert-text);
+      border-radius: var(--radius-md);
+      padding: 15px 20px;
+      margin-bottom: 30px;
+      display: flex;
+      gap: 15px;
+      align-items: flex-start;
+    }
+
+    .alert-banner i {
+      font-size: 1.4rem;
+      margin-top: 2px;
+    }
+
+    .alert-banner p {
+      margin: 0;
+      font-weight: 500;
+    }
+
+    /* Workflow list */
+    .workflow {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    @media (min-width: 600px) {
+      .workflow {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .workflow-step {
+      background: rgba(128, 128, 128, 0.04);
+      border: 1px solid var(--color-card-border);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      position: relative;
+    }
+
+    .workflow-step h3 {
+      font-size: 1.1rem;
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: var(--color-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .workflow-step p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--color-subtitle);
+    }
+
+    /* Visual asset list */
+    .asset-list {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    .asset-list th, .asset-list td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid var(--color-card-border);
+    }
+
+    .asset-list th {
+      font-weight: 700;
+      color: var(--color-primary);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .asset-list td {
+      font-size: 0.95rem;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .badge-ai {
+      background: rgba(139, 92, 246, 0.1);
+      color: var(--color-secondary);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+    }
+
+    .badge-editor {
+      background: rgba(59, 130, 246, 0.1);
+      color: var(--color-primary);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      padding-top: 20px;
+      border-top: 1px solid var(--color-card-border);
+      color: var(--color-subtitle);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <a href="/about_me/" class="back-btn" id="backBtn"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a>
+
+    <header class="header">
+      <button id="themeToggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+      <h1>AI Media &amp; Design Disclosure</h1>
+      <p class="subtitle">Scientific Transparency in Poster Visualizations</p>
+    </header>
+
+    <div class="alert-banner" id="disclosureAlert">
+      <i class="fa-solid fa-circle-info"></i>
+      <div>
+        <p>In accordance with research integrity guidelines, this page documents the computational pipeline and design tools used to produce the visual materials featured on the <strong>LUPIN</strong> and associated scientific posters.</p>
+      </div>
+    </div>
+
+    <div class="card" id="whyAIPage">
+      <h2><i class="fa-solid fa-compass"></i> Human-AI Collaborative Design</h2>
+      <p>
+        To bridge the gap between abstract biomedical signal architectures and intuitive, accessible communication, this project leveraged a hybrid <strong>Generative AI &amp; Graphic Design</strong> workflow. 
+      </p>
+      <p>
+        Rather than relying on generic stock photos or unrefined machine outputs, the custom generative tool <strong>nanabanana (Gemini-based image generation)</strong> was utilized as a <strong>collaborative sketching partner</strong>. These initial concepts were then imported, deconstructed, and rebuilt inside <strong>Adobe Photoshop</strong> to verify scientific accuracy, align with brand guidelines, and overlay vector schematics.
+      </p>
+    </div>
+
+    <div class="card" id="workflowCard">
+      <h2><i class="fa-solid fa-gears"></i> Production Pipeline</h2>
+      <div class="workflow">
+        <div class="workflow-step">
+          <h3><i class="fa-solid fa-wand-magic-sparkles"></i> 1. Generative AI</h3>
+          <p>
+            Detailed, prompt-driven synthesis via <strong>nanabanana</strong> was used to render high-contrast visual metaphors (such as brainwave fluctuations, virtual reality stress grids, and signal paths) representing latent neurological context.
+          </p>
+        </div>
+        <div class="workflow-step">
+          <h3><i class="fa-solid fa-pen-nib"></i> 2. Manual Refinement</h3>
+          <p>
+            The raw images were edited in Adobe Photoshop to remove artifacts, adjust color channels (matching FCUL, LASIGE, and ULisboa branding), insert vector diagrams, and place exact scientific annotations.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="assetsCard">
+      <h2><i class="fa-solid fa-list"></i> Audited Visual Assets</h2>
+      <p>The following figures (Figure 1 through 4) used on the poster contain generative AI elements that were modified or composited in Photoshop:</p>
+      
+      <table class="asset-list" id="assetTable">
+        <thead>
+          <tr>
+            <th>Asset</th>
+            <th>Type / Notes</th>
+            <th>Creation Tools</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Clinical Background (Fig 1)</strong></td>
+            <td>Illustrative Schematic</td>
+            <td>
+              <span class="badge badge-ai">nanabanana Base</span>
+              <span class="badge badge-editor">Photoshop Editing</span>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>LUPIN Methodology (Fig 2)</strong></td>
+            <td>Technical Diagram</td>
+            <td>
+              <span class="badge badge-ai">nanabanana Texture</span>
+              <span class="badge badge-editor">Photoshop Compositions</span>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Validation &amp; Impact (Fig 3)</strong></td>
+            <td rowspan="2" style="vertical-align: middle;">
+              Scientific Plot &amp; Zero-Calibration Profile. 
+              <br/>
+              <em>*Note: Fig 3 and 4 were originally generated as a single composite image and split into two separate assets in Photoshop.*</em>
+            </td>
+            <td rowspan="2" style="vertical-align: middle;">
+              <span class="badge badge-ai">nanabanana Pattern</span>
+              <span class="badge badge-editor">Vector Overlays</span>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Zero-Calibration Profile (Fig 4)</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 João Tomás Garcia Farinha. Built with Astro &amp; Typst.</p>
+    </footer>
+  </div>
+
+  <script is:inline>
+    const themeBtn = document.getElementById('themeToggle');
+    const icon = themeBtn.querySelector('i');
+
+    // Check saved theme
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      icon.classList.replace('fa-moon', 'fa-sun');
+    }
+
+    themeBtn.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      if (isDark) {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'light');
+        icon.classList.replace('fa-sun', 'fa-moon');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+        icon.classList.replace('fa-moon', 'fa-sun');
+      }
+    });
+  </script>
+</body>
+</html>

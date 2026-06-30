@@ -26,3 +26,9 @@ results: "The mentorship program resulted in functional DIY hardware (including 
   <span class="timeline-date">Phase 3: BCI Gaming Integration</span>
   <div class="timeline-content">Developed a Python-Unity bridge to sync live brainwave data with music rhythms, creating a gamified, seamless AI calibration experience.</div>
 </div>
+
+<div style="margin-top: 40px; text-align: center; display: flex; justify-content: center;">
+  <a href="/about_me/research-summer/plano-trabalho.html" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; font-weight: 600; font-size: 1.1rem; background: var(--color-primary); color: white; border-radius: 8px; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); transition: all 0.2s;" onmouseover="this.style.background='var(--color-secondary)';" onmouseout="this.style.background='var(--color-primary)';" target="_blank">
+    <i class="fa-solid fa-file-signature"></i> View Research Summer Work Plan (Obsidian Vault)
+  </a>
+</div>
